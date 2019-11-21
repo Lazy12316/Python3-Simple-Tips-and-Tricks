@@ -91,3 +91,93 @@ print(my_car)
 # namedtuple is immutable
 
 """
+
+#Date:21-Nov-2019
+#Trick-5
+"""
+# Method: Timeit Module
+# Library: Timeit
+# Syntax: timeit.timeit(stmt, setup, timer, number)
+# * stmt - The statement whose time execution you want to measure
+# * setup - which is the code that you run before running the stmt; it defaults to ‘pass’.
+# * timer - timer object of timeit.Timer(). It has default value.
+# * number - Number of iterations you want to run the statement through
+
+# The "timeit" module lets you measure the execution
+# time of small bits of Python code
+
+
+ 
+import timeit
+
+# Example - 1
+
+t = timeit.timeit('"-".join(str(n) for n in range(100))',
+                  number=10000)
+
+print(t)
+
+# Example - 2
+
+# binary search function 
+def binary_search(mylist, find): 
+    while len(mylist) > 0: 
+        mid = (len(mylist))//2
+        if mylist[mid] == find: 
+            return True
+        elif mylist[mid] < find: 
+            mylist = mylist[:mid] 
+        else: 
+            mylist = mylist[mid + 1:] 
+    return False
+
+# compute binary search time 
+def binary_time(): 
+    SETUP_CODE = ''' 
+from __main__ import binary_search 
+from random import randint'''
+  
+    TEST_CODE = ''' 
+mylist = [x for x in range(10000)] 
+find = randint(0, len(mylist)) 
+binary_search(mylist, find)'''
+      
+    # timeit.repeat statement 
+    times = timeit.repeat(setup = SETUP_CODE, 
+                          stmt = TEST_CODE, 
+                          repeat = 3, 
+                          number = 10000) 
+  
+    # priniting minimum exec. time 
+    print('Binary search time: {}'.format(min(times)))
+
+binary_time()
+
+"""
+
+#Trick - 6
+
+"""
+# In-place value swapping
+
+
+# Let's say we want to swap
+# the values of a and b...
+a = 23
+b = 42
+
+# The "classic" way to do it
+# with a temporary variable:
+# tmp = a
+# a = b
+# b = tmp
+
+# Python also lets us
+# use this short-hand:
+a, b = b, a
+
+print(a, b)
+
+"""
+
+
