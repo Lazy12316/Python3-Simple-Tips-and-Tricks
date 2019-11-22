@@ -46,7 +46,8 @@ print(sorted(xs.items(), key=operator.itemgetter(1)))
 
 
 
-#Consider the following dictionary. If a know key is passed, the method greeting will return string HI "userid". if key is invalid, the method will throw key error.
+# Consider the following dictionary. If a know key is passed, the method greeting will return string HI "userid". 
+# if key is invalid, the method will throw key error.
 
 name_for_userid = {382:"Alice", 950:"Bob", 590:"Dilbert"}
 def greeting(userid):
@@ -66,7 +67,9 @@ print(greeting(4000)) # Throws key error
 """
 # Python's Namedtuples can be a great alternative to defining a class manually.
 
-# namedtuple instances are just as memory efficient as regular tuples because they do not have per-instance dictionaries. Each kind of namedtuple is represented by its own class, created by using the namedtuple() factory function. The arguments are the name of the new class and a string containing the names of the elements.
+# namedtuple instances are just as memory efficient as regular tuples because they do not have per-instance dictionaries. 
+# Each kind of namedtuple is represented by its own class, created by using the namedtuple() factory function. 
+# The arguments are the name of the new class and a string containing the names of the elements.
 
 # Method: namedtuple
 # Syntax: namedtuple('','[param1, param2, param3, ....]')
@@ -179,5 +182,132 @@ a, b = b, a
 print(a, b)
 
 """
+# Date:22-Nov-2019
+# Trick - 7
+
+"""
+
+# "is" vs "=="
+
+a = [1, 2, 3]
+b = a
+
+print(a is b)
+
+print(a == b)
+
+c = list(a)
+
+print(a == c)
+print(a is c)
+
+
+# • "is" expressions evaluate to True if two 
+#   variables point to the same object
+
+# • "==" evaluates to True if the objects 
+#   referred to by the variables are equal
+
+# If the address of a and b are printed 
+# i.e, id(a) & id(b), they both point to the same address.
+# a "is" pointing to the same address as b also, a is equal to b.
+# But when the address of c is printed, it is pointed different from address pointed by a.
+# This indicates, c is pointed to different address than a, 
+# therefore resulting in a boolean false as output. While the value of a and c are equal.
+
+""" 
+
+# Trick - 8
+"""
+# Functions are first-class citizens in Python.
+
+# They can be passed as arguments to other functions,
+# returned as values from other functions, and
+# assigned to variables and stored in data structures.
+
+def myfunc(a, b):
+	return a + b
+
+funcs = [myfunc]
+print(funcs[0])
+# <function myfunc at 0x107012230>
+
+print(funcs[0](2, 3))
+
+"""
+
+# Trick - 9
+"""
+# Because Python has first-class functions they can
+# be used to emulate switch/case statements
+
+def dispatch_if(operator, x, y):
+    if operator == 'add':
+        return x + y
+    elif operator == 'sub':
+        return x - y
+    elif operator == 'mul':
+        return x * y
+    elif operator == 'div':
+        return x / y
+    else:
+        return None
+
+
+def dispatch_dict(operator, x, y):
+    return {
+        'add': lambda: x + y,
+        'sub': lambda: x - y,
+        'mul': lambda: x * y,
+        'div': lambda: x / y,
+    }.get(operator, lambda: None)()
+
+
+print(dispatch_if('mul', 2, 8))
+print(dispatch_dict('mul', 2, 8))
+print(dispatch_if('unknown', 2, 8))
+print(dispatch_dict('unknown', 2, 8))
+print(dispatch_if('add', 2, 8))
+print(dispatch_dict('add', 2, 8))
+"""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
