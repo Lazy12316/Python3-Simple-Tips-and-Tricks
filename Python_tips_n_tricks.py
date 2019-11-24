@@ -214,8 +214,8 @@ print(a is c)
 # But when the address of c is printed, it is pointed different from address pointed by a.
 # This indicates, c is pointed to different address than a, 
 # therefore resulting in a boolean false as output. While the value of a and c are equal.
-
-""" 
+"""
+ 
 
 # Trick - 8
 """
@@ -297,12 +297,61 @@ print(even_squares)
 """
 # Type hint and type-check using tool call mypy-lang
 # More about this at https://www.youtube.com/watch?v=2xWhaALHTvU
-
+# https://dev.to/dstarner/using-pythons-type-annotations-4cfe
 
 def add_sum(a: int, b: int) -> int:
 	return a + b
 
 print(add_sum(3,7))
+"""
+
+# Date: 24-Nov-2019
+# Trick - 12
+"""
+# Python's list slice syntax can be used without indices
+# for a few fun and useful things
+
+# https://www.programiz.com/python-programming/shallow-deep-copy
+
+# You can clear all elements from a list:
+lst = [1, 2, 3, 4, 5]
+del lst[:]
+print(lst)
+print("--------------------------------------")
+# You can replace all elements of a list
+# without creating a new list object:
+a = lst
+lst[:] = [7, 8, 9]
+print("Original list is:", lst)
+print("Copied list is", a)
+print("a is lst ?:", (a is lst))
+
+print("--------------------------------------")
+
+# You can also create a (shallow) copy of a list:
+b = lst[:]
+
+print("Shallow Copied list b is",b)
+print("id of lst is :",id(lst))
+print("id of b is :",id(b))
+print("b is lst? :",(b is lst))
+
+print("--------------------------------------")
+
+"""
+
+# Trick - 13
+
+"""
+
+# collections.Counter lets you find the most common
+# elements in an iterable:
+
+import collections
+c = collections.Counter('helloworld')
+print(c)
+print(c.most_common(3))
+
 """
 
 
