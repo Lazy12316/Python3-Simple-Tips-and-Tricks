@@ -354,7 +354,81 @@ print(c.most_common(3))
 
 """
 
+#Date:25-Nov-2019
+# Trick - 14
+"""
+# itertools.permutations() generates permutations 
+# for an iterable. Time to brute-force those passwords ;-)
 
+import itertools
+for p in itertools.permutations('ABCD'):
+    print(p)
+"""
+
+# Trick - 15
+"""
+# When To Use __repr__ vs __str__?
+# Emulate what the std lib does:
+import datetime
+today = datetime.date.today()
+
+# Result of __str__ should be readable:
+print(str(today))
+# >>> '2017-02-02'
+
+# Result of __repr__ should be unambiguous:
+print(repr(today))
+# >>> 'datetime.date(2017, 2, 2)'
+
+# Python interpreter sessions use 
+# __repr__ to inspect objects:
+print(today)
+# >>> datetime.date(2017, 2, 2)
+
+# Can get the timestamp using the datetime library
+today = datetime.datetime.now()
+
+print(today)
+# >>> datetime.datetime(2019, 11, 25, 7, 43, 40, 776480)
+# The first arg is year followed by month, date, hour, minute, seconds, milliseconds
+
+print(str(today))
+# >>> '2019-11-25 07:43:40.776480'
+
+# If you want time in microseconds, then just run the below line, it will return time in microseconds
+print(today.microsecond)
+
+print(today.month) # To get the month from now() api
+print(today.year) # To get the year from now() api 
+print(today.day) # To get the day from now() api 
+print(today.hour) # To get the hour from now() api 
+print(today.minute) # To get the minute from now() api 
+print(today.second) # To get the seconds from now() api 
+
+"""
+
+# Trick - 16
+"""
+# You can use Python's built-in "dis"
+# module to disassemble functions and
+# inspect their CPython VM bytecode:
+
+def greet(name):
+    return 'Hello, ' + name + '!' 
+
+greet('Dan')
+# >>> 'Hello, Dan!'
+
+import dis
+dis.dis(greet)
+
+# 2   0 LOAD_CONST     1 ('Hello, ')
+#     2 LOAD_FAST      0 (name)
+#     4 BINARY_ADD
+#     6 LOAD_CONST     2 ('!')
+#     8 BINARY_ADD
+#    10 RETURN_VALUE
+"""
 
 
 
