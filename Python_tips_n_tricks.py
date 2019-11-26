@@ -1,5 +1,5 @@
 # Date:19-Nov-2019
-
+# [🐍PyTricks]:Trick - 1
 """
 # Different ways to test multiple flags at once in python
 
@@ -19,7 +19,7 @@ if any((x,y,z)):
 
 
 """
-#Trick-2	
+# [🐍PyTricks]:Trick-2	
 """
 # How to sort a python dictionary by value (== get a representation sorted by value)
 
@@ -37,7 +37,7 @@ print(sorted(xs.items(), key=operator.itemgetter(1)))
 """
 
 #Date:20-Nov-2019
-#Trick-3
+# [🐍PyTricks]:Trick-3
 """
 # Using get() to return a default value from a pthon dict
 
@@ -63,7 +63,7 @@ print(greeting_2(39999990))
 print(greeting(4000)) # Throws key error
 """
 
-#Trick-4
+# [🐍PyTricks]:Trick-4
 """
 # Python's Namedtuples can be a great alternative to defining a class manually.
 
@@ -96,7 +96,7 @@ print(my_car)
 """
 
 #Date:21-Nov-2019
-#Trick-5
+# [🐍PyTricks]:Trick-5
 """
 # Method: Timeit Module
 # Library: Timeit
@@ -158,7 +158,7 @@ binary_time()
 
 """
 
-#Trick - 6
+# [🐍PyTricks]:Trick - 6
 
 """
 # In-place value swapping
@@ -183,7 +183,7 @@ print(a, b)
 
 """
 # Date:22-Nov-2019
-# Trick - 7
+# [🐍PyTricks]:Trick - 7
 
 """
 
@@ -217,7 +217,7 @@ print(a is c)
 """
  
 
-# Trick - 8
+# [🐍PyTricks]:Trick - 8
 """
 # Functions are first-class citizens in Python.
 
@@ -236,7 +236,7 @@ print(funcs[0](2, 3))
 
 """
 
-# Trick - 9
+# [🐍PyTricks]:Trick - 9
 """
 # Because Python has first-class functions they can
 # be used to emulate switch/case statements
@@ -272,7 +272,7 @@ print(dispatch_dict('add', 2, 8))
 """
 
 #Date:23-Nov-2019
-# Trick - 10
+# [🐍PyTricks]:Trick - 10
 """
 # Python's list comprehensions are awesome.
 
@@ -293,7 +293,7 @@ even_squares = [x * x for x in range(10) if not x % 2]
 print(even_squares)
 """
 
-# Trick - 11
+# [🐍PyTricks]:Trick - 11
 """
 # Type hint and type-check using tool call mypy-lang
 # More about this at https://www.youtube.com/watch?v=2xWhaALHTvU
@@ -306,7 +306,7 @@ print(add_sum(3,7))
 """
 
 # Date: 24-Nov-2019
-# Trick - 12
+# [🐍PyTricks]:Trick - 12
 """
 # Python's list slice syntax can be used without indices
 # for a few fun and useful things
@@ -340,7 +340,7 @@ print("--------------------------------------")
 
 """
 
-# Trick - 13
+# [🐍PyTricks]:Trick - 13
 
 """
 
@@ -355,7 +355,7 @@ print(c.most_common(3))
 """
 
 #Date:25-Nov-2019
-# Trick - 14
+# [🐍PyTricks]:Trick - 14
 """
 # itertools.permutations() generates permutations 
 # for an iterable. Time to brute-force those passwords ;-)
@@ -365,7 +365,7 @@ for p in itertools.permutations('ABCD'):
     print(p)
 """
 
-# Trick - 15
+# [🐍PyTricks]:Trick - 15
 """
 # When To Use __repr__ vs __str__?
 # Emulate what the std lib does:
@@ -407,7 +407,7 @@ print(today.second) # To get the seconds from now() api
 
 """
 
-# Trick - 16
+# [🐍PyTricks]:Trick - 16
 """
 # You can use Python's built-in "dis"
 # module to disassemble functions and
@@ -429,39 +429,91 @@ dis.dis(greet)
 #     8 BINARY_ADD
 #    10 RETURN_VALUE
 """
+#Date:26-Nov-2015
+# [🐍PyTricks]:Trick - 17
+"""
+# The lambda keyword in Python provides a
+# shortcut for declaring small and 
+# anonymous functions:
 
+add = lambda x, y: x + y
+print(add(5, 3))
+# >>> 8
 
+# You could declare the same add() 
+# function with the def keyword:
 
+def add(x, y):
+    return x + y
+print(add(5, 3))
+# >>> 8
 
+# So what's the big fuss about?
+# Lambdas are *function expressions*:
+print((lambda x, y: x + y)(5, 3))
+# >>> 8
 
+# • Lambda functions are single-expression 
+# functions that are not necessarily bound
+# to a name (they can be anonymous).
 
+# • Lambda functions can't use regular 
+# Python statements and always include an
+# implicit `return` statement
+"""
 
+# [🐍PyTricks]:Trick - 18
+"""
+# Incase you didn't know 
+# Python 3 has a std lib
+# module for working with
+# IP addresses:
 
+import ipaddress
 
+print(ipaddress.ip_address('192.168.1.2'))
+# >>> IPv4Address('192.168.1.2')
 
+print(ipaddress.ip_address('2001:af3::'))
+# >>> IPv6Address('2001:af3::')
+"""
 
+# [🐍PyTricks]:Trick - 19
+"""
+# Accessing class and function names at runtime
+# You can get the name of
+# an object's class as a
+# string:
 
+class MyClass: pass
 
+obj = MyClass()
+print(obj.__class__.__name__)
+# >>> 'MyClass'
 
+# Functions have a
+# similar feature:
 
+def myfunc(): pass
 
+print(myfunc.__name__)
 
+# >>> 'myfunc'
+"""
 
+# [🐍PyTricks]:Trick - 20
+"""
+# Class inheritance and the issubclass() built-in
 
+class BaseClass: pass
+class SubClass(BaseClass): pass
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(issubclass(SubClass, BaseClass))
+# >>> True
+print(issubclass(SubClass, object))
+# >>> True
+print(issubclass(BaseClass, SubClass))
+# >>> False
+"""
 
 
