@@ -98,6 +98,53 @@ def better_contains(haystack, needle):
 if needle not in haystack:
     raise ValueError('Needle not found')
 """
+# Date:28-Nov-2019
+# [🐍PyTricks]: Trick - 25
+"""
+# Pythonic ways of checking if all
+# items in a list are equal:
+
+lst = ['a', 'a', 'a']
+
+print(len(set(lst)) == 1)
+# >>> True
+
+print(all(x == lst[0] for x in lst))
+# >>> True
+
+print(lst.count(lst[0]) == len(lst))
+# >>> True
+
+# I ordered those from "most Pythonic" to "least Pythonic" 
+# and  "least efficient" to "most efficient". 
+# The len(set()) solution is idiomatic,  but constructing 
+# a set is less efficient memory and speed-wise.
+"""
+# [🐍PyTricks]: Trick - 26
+
+"""
+# Forced keyword-only parameters in Python 3.x
+# In Python 3 you can use a bare "*" asterisk
+# in function parameter lists to force the
+# caller to use keyword arguments for certain
+# parameters:
+
+def f(a, b, *, c='x', d='y', e='z'):
+    return 'Hello'
+
+# To pass the value for c, d, and e you 
+# will need to explicitly pass it as 
+# "key=value" named arguments:
+
+print(f(1, 2, c='p', d='q',e='v'))
+# >>> 'Hello'
+
+print(f(1, 2, 'p', 'q', 'v'))
+# >>> TypeError: 
+#      "f() takes 2 positional arguments but 5 were given"
+"""
+
+
 
 
 
